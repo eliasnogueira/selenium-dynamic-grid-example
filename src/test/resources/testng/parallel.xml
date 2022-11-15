@@ -1,0 +1,24 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="Multi browser test" verbose="1" parallel="tests" thread-count="99">
+
+    <test name="Chrome execution">
+        <parameter name="browser" value="chrome"/>
+        <classes>
+            <class name="com.eliasnogueira.testng.BrowserDetectorTest"/>
+        </classes>
+    </test>
+
+    <test name="Firefox Execution">
+        <parameter name="browser" value="firefox"/>
+        <classes>
+            <class name="com.eliasnogueira.testng.BrowserDetectorTest"/>
+        </classes>
+    </test>
+
+    <test name="Edge Execution">
+        <parameter name="browser" value="edge"/>
+        <classes>
+            <class name="com.eliasnogueira.testng.BrowserDetectorTest"/>
+        </classes>
+    </test>
+</suite>
