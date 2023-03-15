@@ -10,9 +10,6 @@ The main intent is to give you examples to run multi-browser parallel tests.
 
 Don't forget to give this project a :star
 
-This repo is based on a presentation. Would you like to see the slides? 
-https://speakerdeck.com/eliasnogueira/parallel-frontend-test-execution-using-selenium-and-docker
-
 ## How to run this project
 
 1. Navigate to the `grid` folder
