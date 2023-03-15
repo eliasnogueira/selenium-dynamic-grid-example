@@ -33,7 +33,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import static org.apache.commons.lang3.StringUtils.capitalize;
 import static org.assertj.core.api.SoftAssertions.assertSoftly;
 
-class  runMultiBrowserDetectorTest extends BaseWeb {
+class MultiBrowserDetectorTest extends BaseWeb {
 
     @ParameterizedTest
     @EnumSource(BrowserFactory.class)
