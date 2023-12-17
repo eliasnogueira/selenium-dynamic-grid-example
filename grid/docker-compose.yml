@@ -1,4 +1,4 @@
-version: "3"
+version: "3.9"
 services:
   node-docker:
     image: selenium/node-docker:latest

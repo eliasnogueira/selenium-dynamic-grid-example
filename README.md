@@ -26,7 +26,7 @@ cd grid
 docker-compose up
 ```
 
-3. Open the grid dashboard at http://localhost:4444/ui/index.html
+3. Open the grid dashboard at http://localhost:4444/
 
 4. Run the test
 
