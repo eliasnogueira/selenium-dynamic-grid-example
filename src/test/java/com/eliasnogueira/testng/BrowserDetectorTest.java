@@ -28,7 +28,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.annotations.Test;
 
-import static org.apache.commons.lang3.StringUtils.capitalize;
 import static org.assertj.core.api.SoftAssertions.assertSoftly;
 
 public class BrowserDetectorTest extends BaseWeb {
@@ -51,4 +50,8 @@ public class BrowserDetectorTest extends BaseWeb {
                     .containsAnyOf(platformNames);
         });
     }
+    private String capitalize(final String line) {
+        return Character.toUpperCase(line.charAt(0)) + line.substring(1);
+    }
 }
+

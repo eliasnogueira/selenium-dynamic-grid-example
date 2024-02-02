@@ -1,0 +1,23 @@
+= Contribution guide
+
+== I have an idea or I want to create an issue
+If you have an idea, suggestion, feature or an issue, please log an https://github.com/eliasnogueira/selenium-java-lean-test-achitecture/issues[issue].
+
+== Report a Bug or Request a Feature
+Select _Bug report_ if you want to log an issue or _Feature request_ if you want to see something new.
+
+Do not forget to add a _label_ to the issue or feature request.
+
+== I have enough knowledge in development to collaborate
+Excellent! Thank you for helping me out!
+
+You're going to need a few things first:
+* JDK 17+
+
+== Send a pull request
+Please add an explanation about the pull request.
+If there is an issue/feature you created, please include the link.
+
+Pull requests without explanations will be rejected, so please add:
+* the reason you're submitting the pull request
+* the benefit your pull request will bring to the application

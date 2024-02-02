@@ -30,7 +30,6 @@ import org.junit.jupiter.params.provider.EnumSource;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
-import static org.apache.commons.lang3.StringUtils.capitalize;
 import static org.assertj.core.api.SoftAssertions.assertSoftly;
 
 class MultiBrowserDetectorTest extends BaseWeb {
@@ -56,5 +55,9 @@ class MultiBrowserDetectorTest extends BaseWeb {
             soft.assertThat(driver.findElement(By.cssSelector("[data-browser-detect='OS']")).getText().toLowerCase())
                     .containsAnyOf(platformNames);
         });
+    }
+
+    private String capitalize(final String line) {
+        return Character.toUpperCase(line.charAt(0)) + line.substring(1);
     }
 }

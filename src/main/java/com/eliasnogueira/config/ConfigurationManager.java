@@ -31,7 +31,7 @@ public class ConfigurationManager {
     private ConfigurationManager() {
     }
 
-    public static Configuration configuration() {
+    public static Configuration getInstance() {
         return ConfigCache.getOrCreate(Configuration.class);
     }
 }

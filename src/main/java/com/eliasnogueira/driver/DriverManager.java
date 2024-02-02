@@ -26,22 +26,35 @@ package com.eliasnogueira.driver;
 
 import org.openqa.selenium.WebDriver;
 
+import java.util.Optional;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 public class DriverManager {
 
-    private static final ThreadLocal<WebDriver> driver = new ThreadLocal<>();
+    private static final ThreadLocal<WebDriver> DRIVER = new ThreadLocal<>();
+    private static final Logger LOGGER = Logger.getLogger(DriverManager.class.getName());
 
     private DriverManager() {}
 
     public static WebDriver getDriver() {
-        return driver.get();
+        return Optional.ofNullable(DRIVER.get())
+                .orElseThrow(() -> new IllegalStateException("WebDriver has not been set."));
     }
 
     public static void setDriver(WebDriver driver) {
-        DriverManager.driver.set(driver);
+        if (driver == null) {
+            LOGGER.log(Level.SEVERE, "WebDriver is null while trying to set the driver in DriverManager");
+            throw new IllegalArgumentException("WebDriver cannot be null.");
+        } else {
+            DRIVER.set(driver);
+        }
     }
 
     public static void quit() {
-        DriverManager.driver.get().quit();
-        driver.remove();
+        Optional.ofNullable(DRIVER.get()).ifPresent(webDriver -> {
+            webDriver.quit();
+            DRIVER.remove();
+        });
     }
 }

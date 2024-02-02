@@ -1,18 +1,16 @@
 version: "3.9"
 services:
-  node-docker:
+  node-docker: &docker
     image: selenium/node-docker:latest
+    environment:
+      - SE_EVENT_BUS_HOST=*selenium_hub
+      - SE_EVENT_BUS_PUBLISH_PORT=4442
+      - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
     volumes:
       - ./assets:/opt/selenium/assets
       - ./config.toml:/opt/bin/config.toml
-    depends_on:
-      - selenium-hub
-    environment:
-      - SE_EVENT_BUS_HOST=selenium-hub
-      - SE_EVENT_BUS_PUBLISH_PORT=4442
-      - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
-
   selenium-hub:
+    <<: *docker
     image: selenium/hub:latest
     container_name: selenium-hub
     ports:

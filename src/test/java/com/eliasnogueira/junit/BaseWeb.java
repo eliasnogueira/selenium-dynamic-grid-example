@@ -32,9 +32,9 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-import static com.eliasnogueira.config.ConfigurationManager.configuration;
+import static com.eliasnogueira.config.ConfigurationManager.getInstance;
 
-public class BaseWeb {
+public abstract class BaseWeb {
 
     protected RemoteWebDriver driver;
     protected WebDriverWait wait;
@@ -46,10 +46,10 @@ public class BaseWeb {
 
     protected void beforeStartEachTest(String browser) {
         driver = new TargetFactory().createInstance(browser);
-        wait = new WebDriverWait(driver, Duration.ofSeconds(configuration().timeout()));
+        wait = new WebDriverWait(driver, Duration.ofSeconds(getInstance().timeout()));
         DriverManager.setDriver(driver);
 
-        DriverManager.getDriver().get(configuration().url());
+        DriverManager.getDriver().get(getInstance().url());
     }
 
     protected String[] normalizeBrowserName(String browserName) {
