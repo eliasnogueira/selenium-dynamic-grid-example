@@ -35,8 +35,8 @@ jobs:
       - name: Build with Maven
         run: mvn -B -q -DskipTests package --file pom.xml
 
-      - name: Run parallel tests using JUnit
-        run: mvn -B -q test -Dtest=com.eliasnogueira.junit.MultiBrowserDetectorTest
+      - name: Run parallel tests using TestNG
+        run: mvn -B -q test -DsuiteXmlFile=src/test/resources/testng/parallel.xml
 
       - name: Stop containers
         if: always()
