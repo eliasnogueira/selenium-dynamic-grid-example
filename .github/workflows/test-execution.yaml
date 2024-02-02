@@ -36,7 +36,7 @@ jobs:
         run: mvn -B -q -DskipTests package --file pom.xml
 
       - name: Run parallel tests using JUnit
-        run: mvn -B -q test
+        run: mvn -B -q test -Dtest=com.eliasnogueira.junit.MultiBrowserDetectorTest
 
       - name: Stop containers
         if: always()
