@@ -29,7 +29,7 @@ import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.remote.AbstractDriverOptions;
 
-import static com.eliasnogueira.config.ConfigurationManager.configuration;
+import static com.eliasnogueira.config.ConfigurationManager.getInstance;
 
 public enum BrowserFactory {
 
@@ -41,7 +41,7 @@ public enum BrowserFactory {
             chromeOptions.addArguments("--disable-infobars");
             chromeOptions.addArguments("--disable-notifications");
 
-            if(configuration().headless()) chromeOptions.addArguments("--headless=new");
+            if(getInstance().headless()) chromeOptions.addArguments("--headless=new");
 
             return chromeOptions;
         }
@@ -51,7 +51,7 @@ public enum BrowserFactory {
             FirefoxOptions firefoxOptions = new FirefoxOptions();
             firefoxOptions.addArguments(START_MAXIMIZED);
 
-            if(configuration().headless()) firefoxOptions.addArguments("--headless");
+            if(getInstance().headless()) firefoxOptions.addArguments(HEADLESS);
 
             return firefoxOptions;
         }
@@ -61,13 +61,14 @@ public enum BrowserFactory {
             EdgeOptions edgeOptions = new EdgeOptions();
             edgeOptions.addArguments(START_MAXIMIZED);
 
-            if(configuration().headless()) edgeOptions.addArguments("--headless");
+            if(getInstance().headless()) edgeOptions.addArguments(HEADLESS);
 
             return edgeOptions;
         }
     };
 
     private static final String START_MAXIMIZED = "--start-maximized";
+    public static final String HEADLESS = "--headless";
 
     public abstract AbstractDriverOptions<?> getOptions();
 }

@@ -27,37 +27,39 @@ package com.eliasnogueira.driver;
 import org.openqa.selenium.MutableCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
-import java.net.URL;
+import java.net.URI;
+import java.util.Optional;
 import java.util.logging.Logger;
 
-import static com.eliasnogueira.config.ConfigurationManager.configuration;
-import static java.lang.String.*;
+import static com.eliasnogueira.config.ConfigurationManager.getInstance;
+import static java.lang.String.format;
 
 public class TargetFactory {
 
-    private static final Logger logger = Logger.getLogger(TargetFactory.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(TargetFactory.class.getName());
 
     public RemoteWebDriver createInstance(String browser) {
-        logger.info(format("Creating a [%s] browser instance", browser));
-        return createRemoteInstance(BrowserFactory.valueOf(browser.toUpperCase()).getOptions());
+        LOGGER.info(() -> format("Creating a [%s] browser instance", browser));
+        return createRemoteInstance(BrowserFactory.valueOf(browser.toUpperCase()).getOptions())
+                .orElseThrow(() -> new IllegalArgumentException(String.format("Unable to create driver with browser %s", browser)));
     }
 
-    private RemoteWebDriver createRemoteInstance(MutableCapabilities capability) {
+    private Optional<RemoteWebDriver> createRemoteInstance(MutableCapabilities capabilities) {
         RemoteWebDriver remoteWebDriver = null;
         try {
-            String gridURL = format("http://%s:%s", configuration().gridUrl(), configuration().gridPort());
-            logger.info(format("Tests will run at: %s for %s", gridURL, capability));
+            String gridUrl = format("http://%s:%s", getInstance().gridUrl(), getInstance().gridPort());
+            LOGGER.info(() -> format("Tests will run at: %s for %s", gridUrl, capabilities));
 
-            remoteWebDriver = new RemoteWebDriver(new URL(gridURL), capability);
+            remoteWebDriver = new RemoteWebDriver(URI.create(gridUrl).toURL(), capabilities);
+            return Optional.of(remoteWebDriver);
         } catch (java.net.MalformedURLException e) {
-            logger.severe("Grid URL is invalid or Grid is not available");
-            logger.severe(format("Browser: %s", capability.getBrowserName()));
-            logger.severe(e.toString());
+            LOGGER.severe(() -> "Grid URL is invalid or Grid is not available");
+            LOGGER.severe(e::toString);
+            throw new RuntimeException(e);
         } catch (IllegalArgumentException e) {
-            logger.severe(format("Browser %s is not valid or recognized", capability.getBrowserName()));
-            logger.severe(e.toString());
+            LOGGER.severe(() -> format("Browser %s is not valid or recognized", capabilities.getBrowserName()));
+            LOGGER.severe(e::toString);
+            throw new RuntimeException(e);
         }
-
-        return remoteWebDriver;
     }
 }

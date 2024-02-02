@@ -34,7 +34,7 @@ import org.testng.annotations.Parameters;
 
 import java.time.Duration;
 
-import static com.eliasnogueira.config.ConfigurationManager.configuration;
+import static com.eliasnogueira.config.ConfigurationManager.getInstance;
 
 public abstract class BaseWeb {
 
@@ -45,10 +45,10 @@ public abstract class BaseWeb {
     @Parameters("browser")
     public void preCondition(String browser) {
         driver = new TargetFactory().createInstance(browser);
-        wait = new WebDriverWait(driver, Duration.ofSeconds(configuration().timeout()));
+        wait = new WebDriverWait(driver, Duration.ofSeconds(getInstance().timeout()));
         DriverManager.setDriver(driver);
 
-        DriverManager.getDriver().get(configuration().url());
+        DriverManager.getDriver().get(getInstance().url());
     }
 
     @AfterMethod(alwaysRun = true)
