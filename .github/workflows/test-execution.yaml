@@ -39,7 +39,7 @@ jobs:
         run: mvn -B -q -DskipTests package --file pom.xml
 
       - name: Run parallel tests using TestNG
-        run: mvn -B -q test -Ptestng -Dgrid.url=node-docker
+        run: mvn -B -q test -Ptestng
 
       - name: Stop containers
         if: always()
