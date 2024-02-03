@@ -93,7 +93,7 @@
     <!-- This profile execute the TestNG suite inside the suites folder on test/resources -->
     <profiles>
         <profile>
-            <id>web-execution</id>
+            <id>testng</id>
             <build>
                 <plugins>
                     <plugin>
@@ -102,7 +102,7 @@
                         <version>${maven-surefire-plugin.version}</version>
                         <configuration>
                             <suiteXmlFiles>
-                                <suiteXmlFile>src/test/resources/suites/${suite}.xml</suiteXmlFile>
+                                <suiteXmlFile>src/test/resources/testng/parallel.xml</suiteXmlFile>
                             </suiteXmlFiles>
                         </configuration>
                     </plugin>
