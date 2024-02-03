@@ -32,6 +32,9 @@ jobs:
       - name: Start Selenium Grid
         run: docker-compose -f "grid/docker-compose.yml" up -d
 
+      - name: Get IP Address
+        run: ipAddress = $(curl https://api.ipify.org)
+
       - name: Wait for Selenium Grid
         run: grid/wait-for-grid.sh
 
@@ -39,7 +42,7 @@ jobs:
         run: mvn -B -q -DskipTests package --file pom.xml
 
       - name: Run parallel tests using TestNG
-        run: mvn -B -q test -Ptestng
+        run: mvn -B -q test -Ptestng -Dgrid.url=$ipAddress
 
       - name: Stop containers
         if: always()
