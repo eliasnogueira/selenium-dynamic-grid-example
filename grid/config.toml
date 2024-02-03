@@ -1,24 +1,15 @@
-[servers]
-firefox = "selenium/standalone-firefox:latest"
-chrome = "selenium/standalone-chrome:latest"
-edge = "selenium/standalone-edge:latest"
-
-[browsers]
-firefox = "{\"browserName\": \"firefox\"}"
-chrome = "{\"browserName\": \"chrome\"}"
-edge = "{\"browserName\": \"MicrosoftEdge\"}"
-
 [node]
 detect-drivers = false
 max-sessions = 3
 override-max-sessions = true
 
 [docker]
-browser_configs = [
-    "${servers.firefox}", "${browsers.firefox}",
-    "${servers.chrome}", "${browsers.chrome}",
-    "${servers.edge}", "${browsers.edge}"
+configs = [
+    "selenium/standalone-firefox:latest", "{\"browserName\": \"firefox\"}",
+    "selenium/standalone-chrome:latest", "{\"browserName\": \"chrome\"}",
+    "selenium/standalone-edge:latest", "{\"browserName\": \"MicrosoftEdge\"}"
 ]
+
 # socat -4 TCP-LISTEN:2375,fork UNIX-CONNECT:/var/run/docker.sock
 url = "http://host.docker.internal:2375"
 video-image = "selenium/video:latest"
