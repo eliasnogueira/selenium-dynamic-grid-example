@@ -4,21 +4,21 @@
     <test name="Chrome execution">
         <parameter name="browser" value="chrome"/>
         <classes>
-            <class name="com.eliasnogueira.testng.BrowserDetectorTest"/>
+            <class name="com.eliasnogueira.testng.MultiBrowserDetectorTest"/>
         </classes>
     </test>
 
     <test name="Firefox Execution">
         <parameter name="browser" value="firefox"/>
         <classes>
-            <class name="com.eliasnogueira.testng.BrowserDetectorTest"/>
+            <class name="com.eliasnogueira.testng.MultiBrowserDetectorTest"/>
         </classes>
     </test>
 
     <test name="Edge Execution">
         <parameter name="browser" value="edge"/>
         <classes>
-            <class name="com.eliasnogueira.testng.BrowserDetectorTest"/>
+            <class name="com.eliasnogueira.testng.MultiBrowserDetectorTest"/>
         </classes>
     </test>
 </suite>
