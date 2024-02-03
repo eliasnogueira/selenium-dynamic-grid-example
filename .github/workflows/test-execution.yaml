@@ -29,8 +29,11 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-maven-
 
-      - name: Start containers
+      - name: Start Selenium Grid
         run: docker-compose -f "grid/docker-compose.yml" up -d
+
+      - name: Wait for Selenium Grid
+        run: docker inspect --format='{{json .State.Health.Status}}' selenium-hub "healthy"
 
       - name: Build with Maven
         run: mvn -B -q -DskipTests package --file pom.xml
@@ -40,4 +43,4 @@ jobs:
 
       - name: Stop containers
         if: always()
-        run: docker-compose -f "docker-compose.yml" down
+        run: docker-compose -f "grid/docker-compose.yml" down
