@@ -30,10 +30,10 @@ jobs:
             ${{ runner.os }}-maven-
 
       - name: Start Selenium Grid
-        run: docker-compose -f "grid/docker-compose.yml" up -d
+        run: grid/wait-for-grid.sh
 
       - name: Wait for Selenium Grid
-        run: docker inspect --format='{{json .State.Health.Status}}' selenium-hub "healthy"
+        run: docker inspect --format='{{json .State.Health.Status}}' selenium-hub
 
       - name: Build with Maven
         run: mvn -B -q -DskipTests package --file pom.xml
