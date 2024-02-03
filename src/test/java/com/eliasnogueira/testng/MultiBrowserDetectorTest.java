@@ -30,7 +30,7 @@ import org.testng.annotations.Test;
 
 import static org.assertj.core.api.SoftAssertions.assertSoftly;
 
-public class BrowserDetectorTest extends BaseWeb {
+public class MultiBrowserDetectorTest extends BaseWeb {
 
     @Test
     public void detectBrowserTest() {
@@ -54,4 +54,3 @@ public class BrowserDetectorTest extends BaseWeb {
         return Character.toUpperCase(line.charAt(0)) + line.substring(1);
     }
 }
-
