@@ -46,7 +46,8 @@ In the `grid` folder we will see two files:
 The `general.properties` file has basic common values like URL, timeout, and headless execution.
 The `grid.properties` file has the url and port of the grid, to configure it.
 
-Normally we add those values in the properties files to easily. You can change these values running the test using a CI/CD tool.
+Normally we add those values in the properties files to easily.
+You can change these values running the test using a CI/CD tool.
 
 The class `Configuration` has all the bindings to the properties file, where the `ConfigurationManager` is responsible to load it.
 To make this happen the Owner library is in use.
@@ -73,7 +74,7 @@ The TestNG tests are located at `src/test/java/com.eliasnogueira.testng` and the
 
 ==== How TestNG runs the tests in parallel
 
-TestNG has a built-in feature to run parallel tests using a test suite, which is an XML file to group different tests for execution. 
+TestNG has a built-in feature to run parallel tests using a test suite, which is an XML file to group different tests for execution.
 The `parallel` attribute of the `<suite>` tag is the indication of what should be run in parallel.
 
 The `BaseWeb` class has a pre-condition that will match the required parameter with the parameter set by each test in the `src/test/java/resources/testng/parallel.xml` file.
@@ -89,4 +90,5 @@ The JUnit 5 tests are located at `src/test/java/com.eliasnogueira.junit` and the
 
 We know that the `MultiBrowserDetectorTest` will run the test for each browser present in the `BrowserFactory` class.
 
-The file `junit-platform.properties` has configurations set to run the tests in parallel, in a concurrent mode, and with a fixed number of parallel tests. You can take a look at the file to see the configurations set.
+The file `junit-platform.properties` has configurations set to run the tests in parallel, in a concurrent mode, and with a fixed number of parallel tests.
+You can take a look at the file to see the configurations set.

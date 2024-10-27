@@ -6,7 +6,7 @@
 
     <groupId>com.eliasnogueira</groupId>
     <artifactId>selenium-dynamic-grid-example</artifactId>
-    <version>1.0.3</version>
+    <version>1.0.4</version>
 
     <scm>
         <connection>scm:git@github.com:eliasnogueira/selenium-dynamic-grid-example.git</connection>
@@ -14,16 +14,16 @@
     </scm>
 
     <properties>
-        <java.version>21</java.version>
+        <java.version>23</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <maven-surefire-plugin.version>3.2.5</maven-surefire-plugin.version>
-        <maven-compiler-plugin.version>3.12.1</maven-compiler-plugin.version>
+        <maven-surefire-plugin.version>3.5.1</maven-surefire-plugin.version>
+        <maven-compiler-plugin.version>3.13.0</maven-compiler-plugin.version>
 
-        <selenium.version>4.17.0</selenium.version>
-        <testng.version>7.9.0</testng.version>
-        <junit.version>5.10.1</junit.version>
-        <assertj.version>3.25.2</assertj.version>
+        <selenium.version>4.25.0</selenium.version>
+        <testng.version>7.10.2</testng.version>
+        <junit.version>5.11.3</junit.version>
+        <assertj.version>3.26.3</assertj.version>
         <owner.version>1.0.12</owner.version>
         <log4j.version>2.21.1</log4j.version>
 
